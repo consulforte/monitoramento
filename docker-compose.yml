@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./config/prometheus:/etc/prometheus
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+
+  wazuh:
+    image: wazuh/wazuh-manager
+    ports:
+      - "1515:1515"
+
+  zabbix:
+    image: zabbix/zabbix-server-mysql
+    ports:
+      - "10051:10051"
+
+  netbox:
+    image: netbox/netbox
+    ports:
+      - "8000:8000"
